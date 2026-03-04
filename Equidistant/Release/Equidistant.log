@@ -1,0 +1,8 @@
+﻿  pch.cpp
+  Coordinate.cpp
+  Equidistant.cpp
+  MEarth.cpp
+  MEllipse.cpp
+  MPoint.cpp
+  MVector.cpp
+  Equidistant.vcxproj -> C:\Users\18453\source\repos\Equidistant\Bin\Release\Equidistant.lib
