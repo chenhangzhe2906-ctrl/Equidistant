@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\GitHub.Copilot.SDK.0.1.30\build\GitHub.Copilot.SDK.props" Condition="Exists('..\packages\GitHub.Copilot.SDK.0.1.30\build\GitHub.Copilot.SDK.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -94,7 +95,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>\Users\18453\source\repos\Equidistant\Bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Bin\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>..\Bin\Debug\Equidistant.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -145,7 +146,18 @@
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\GitHub.Copilot.SDK.0.1.30\build\GitHub.Copilot.SDK.targets" Condition="Exists('..\packages\GitHub.Copilot.SDK.0.1.30\build\GitHub.Copilot.SDK.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\GitHub.Copilot.SDK.0.1.30\build\GitHub.Copilot.SDK.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitHub.Copilot.SDK.0.1.30\build\GitHub.Copilot.SDK.props'))" />
+    <Error Condition="!Exists('..\packages\GitHub.Copilot.SDK.0.1.30\build\GitHub.Copilot.SDK.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitHub.Copilot.SDK.0.1.30\build\GitHub.Copilot.SDK.targets'))" />
+  </Target>
 </Project>

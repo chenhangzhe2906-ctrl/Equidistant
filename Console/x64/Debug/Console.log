@@ -1,0 +1,2 @@
+﻿  Console.cpp
+C:\Users\18453\source\repos\Equidistant\Console\Console.cpp(5,10): fatal error C1083: 无法打开包括文件: “MPoint.h”: No such file or directory

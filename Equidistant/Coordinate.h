@@ -14,8 +14,10 @@ public:
 	Coordinate(vector <MPoint> Cities);
 
 public:
-	double CalculateVariance(MPoint& f);
-	MPoint Solver();
+	double CalculateVariance (const MPoint& f) const;
+	double CalculateScore(const MPoint& f);
+	MPoint simpleSolver();
+	MPoint advancedSolver();
 
 private:
 	vector <MPoint> CityList;

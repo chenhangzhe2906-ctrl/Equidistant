@@ -21,7 +21,7 @@ Coordinate::Coordinate(vector <MPoint> Cities):CityList(Cities)
 	return;
 }
 
-double Coordinate::CalculateVariance(MPoint &f)
+double Coordinate::CalculateVariance(const MPoint &f) const
 {
 	double average = 0.0;
 	double Variance = 0.0;
@@ -34,7 +34,7 @@ double Coordinate::CalculateVariance(MPoint &f)
 	return Variance;
 }
 
-MPoint Coordinate::Solver()
+MPoint Coordinate::simpleSolver()
 {
 	int iterations = 0;
 	double level=0.0001;

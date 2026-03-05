@@ -18,6 +18,14 @@ MPoint::MPoint(double L, double B)
 	Get_XYZ(L, B);
 }
 
+MPoint::MPoint(double L, double B,  double dW, double cM, double cT)
+{
+	this->L = L;
+	this->B = B;
+	Get_XYZ(L, B);
+	extraInit(dW, cM, cT);
+}
+
 MPoint::MPoint(double x, double y, double z)
 {
 	Set(x, y, z);
@@ -26,11 +34,28 @@ MPoint::MPoint(double x, double y, double z)
 	return;
 }
 
+MPoint::MPoint(double x, double y, double z,double dW,double cM,double cT)
+{
+	Set(x, y, z);
+	this->L = Get_LB(x, y, z)[0];
+	this->B = Get_LB(x, y, z)[1];
+	extraInit(dW, cM, cT);
+	return;
+}
+
 void MPoint::Set(double x, double y, double z)
 {
 	this->X = x;
 	this->Y = y;
 	this->Z = z;
+	return;
+}
+
+void MPoint::extraInit(double dW,double cM, double cT)
+{
+	this->demandWeight = dW;
+	this->costMoney = cM;
+	this->costTime = cT;
 	return;
 }
 
@@ -86,7 +111,7 @@ void MPoint::Move(double m_L, double m_B)
 	return;
 }
 
-double MPoint::DistanceTo(MPoint& other) const
+double MPoint::DistanceTo(const MPoint& other) const
 {
 	double lat1_rad = this->B * DEG_TO_RAD;
 	double lon1_rad = this->L * DEG_TO_RAD;
