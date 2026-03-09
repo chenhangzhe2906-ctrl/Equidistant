@@ -157,6 +157,11 @@
   <ItemGroup>
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="LogisticsCostModel.h" />
+    <ClInclude Include="LogisticsData.h" />
+    <ClInclude Include="LogisticsPoint.h" />
+    <ClInclude Include="LogisticsReport.h" />
+    <ClInclude Include="LogisticsSolver.h" />
     <ClInclude Include="MEarth.h" />
     <ClInclude Include="MEllipse.h" />
     <ClInclude Include="MPoint.h" />
@@ -166,6 +171,11 @@
   <ItemGroup>
     <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="Equidistant.cpp" />
+    <ClCompile Include="LogisticsCostModel.cpp" />
+    <ClCompile Include="LogisticsData.cpp" />
+    <ClCompile Include="LogisticsPoint.cpp" />
+    <ClCompile Include="LogisticsReport.cpp" />
+    <ClCompile Include="LogisticsSolver.cpp" />
     <ClCompile Include="MEarth.cpp" />
     <ClCompile Include="MEllipse.cpp" />
     <ClCompile Include="MPoint.cpp" />

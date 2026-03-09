@@ -4,6 +4,12 @@
 MPoint::MPoint()
 {
 	Set(0.0, 0.0, 0.0);
+	L = 0.0;
+	B = 0.0;
+	N = 0.0;
+	demandWeight = 1.0;
+	costMoney = 1.0;
+	costTime = 1.0;
 }
 
 MPoint::~MPoint()
@@ -86,7 +92,7 @@ vector<double> MPoint::Get_LB(double x, double y, double z)
 		N = MAJORAXIS / sqrt(1 - ECCENTRICITY * ECCENTRICITY * sin(B) * sin(B));
 		return vector <double> {L, B};
 	}
-	const double epsilon = tan(0.0000000001); //ÑÇÎ¢Ã×¼¶Îó²î
+	const double epsilon = tan(0.0000000001); //ï¿½ï¿½Î¢ï¿½×¼ï¿½ï¿½ï¿½ï¿½
 	double temp=1.0;
 	int count = 0;
 	double t_n, r, l;
@@ -127,7 +133,7 @@ double MPoint::DistanceTo(const MPoint& other) const
 
 	double c = 2.0 * atan2(sqrt(a), sqrt(1.0 - a));
 
-	return R * c; // ·µ»Ø¾àÀë£¬µ¥Î»£º¹«Àï
+	return R * c; // ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ë£¬ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 MPoint & MPoint::operator=(const MPoint& point)
@@ -139,6 +145,9 @@ MPoint & MPoint::operator=(const MPoint& point)
 		Y = point.Y;
 		Z = point.Z; 
 		N = point.N;
+		demandWeight = point.demandWeight;
+		costMoney    = point.costMoney;
+		costTime     = point.costTime;
 	}
 	return *this;
 }

@@ -19,10 +19,33 @@ const double R = 6371.0088;
 // 添加要在此处预编译的标头
 
 #include "framework.h"
-#include<cmath>
+#include <cmath>
 #include <vector>
-#include<iostream>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <functional>
+#include <algorithm>
+#include <numeric>
+#include <map>
+#include <limits>
 using namespace std;
+
+// 精确 Haversine 大圆距离（公里），输入经纬度均为度数
+inline double CalcHaversineKm(double lon1_deg, double lat1_deg,
+                               double lon2_deg, double lat2_deg)
+{
+    constexpr double _R = 6371.0088;
+    constexpr double _D2R = PI / 180.0;
+    double la1 = lat1_deg * _D2R, lo1 = lon1_deg * _D2R;
+    double la2 = lat2_deg * _D2R, lo2 = lon2_deg * _D2R;
+    double dLat = la2 - la1, dLon = lo2 - lo1;
+    double a = sin(dLat / 2) * sin(dLat / 2)
+             + cos(la1) * cos(la2) * sin(dLon / 2) * sin(dLon / 2);
+    return _R * 2.0 * atan2(sqrt(a), sqrt(1.0 - a));
+}
 
 
 #endif //PCH_H
